@@ -1,8 +1,8 @@
 import "./App.css";
 import { useState } from "react";
 import AddNewVideo from "./components/AddNewVideo";
-import Video from "./components/Video";
 import videoDB from "./data/data";
+import VideoList from "./components/VideoList";
 
 function App() {
   const [videos, setVideos] = useState(videoDB);
@@ -14,16 +14,7 @@ function App() {
   return (
     <div className="App">
       <AddNewVideo addVideos={addVideos}></AddNewVideo>
-      {videos.map((video) => (
-        <Video
-          key={video.id}
-          title={video.title}
-          views={video.views}
-          time={video.time}
-          channel={video.channel}
-          id={video.id}
-        ></Video>
-      ))}
+      <VideoList videos={videos}></VideoList>
     </div>
   );
 }
