@@ -5,30 +5,30 @@ import videoDB from "./data/data";
 import VideoList from "./components/VideoList";
 
 function App() {
+  const [editableVideo, setEditableVideo] = useState();
+
   function videoReducer(videos, action) {
     switch (action.type) {
       case "ADD":
         return [...videos, { ...action.payload, id: videos.length + 1 }];
       case "DELETE":
-        return [videos.filter((video) => video.id !== action.payload)];
+        return videos.filter((video) => video.id !== action.payload);
       case "UPDATE":
         const index = videos.findIndex((v) => v.id === action.payload.id);
         const newUpdatedVideo = [...videos];
-        newUpdatedVideo.splice(index, 1, action.payload.video);
+        newUpdatedVideo.splice(index, 1, action.payload);
+        setEditableVideo();
         return newUpdatedVideo;
     }
   }
   const [videos, dispatch] = useReducer(videoReducer, videoDB);
   // const [videos, setVideos] = useState(videoDB);
-  const [editableVideo, setEditableVideo] = useState();
 
   function addVideos(video) {
     dispatch({ type: "ADD", payload: video });
   }
   function deleteVideo(id) {
     dispatch({ type: "DELETE", payload: id });
-
-    // setVideos(videos.filter((video) => video.id !== id));
   }
   function editVideo(id) {
     setEditableVideo(videos.find((video) => video.id === id));
@@ -36,8 +36,6 @@ function App() {
 
   function updateVideo(video) {
     dispatch({ type: "UPDATE", payload: video });
-
-    // setVideos(newUpdatedVideo);
   }
 
   return (
