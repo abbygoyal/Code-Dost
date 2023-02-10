@@ -1,11 +1,14 @@
 import React from "react";
 import "../components/Video.css";
 
-function Video({ title, id, channel, views, time, deleteVideo, editVideo }) {
+function Video({ title, id, channel, views, time, dispatch, editVideo }) {
   return (
     <>
       <div className="container">
-        <button className="close" onClick={() => deleteVideo(id)}>
+        <button
+          className="close"
+          onClick={() => dispatch({ type: "DELETE", payload: id })}
+        >
           X
         </button>
         <button className="edit" onClick={() => editVideo(id)}>
