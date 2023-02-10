@@ -1,10 +1,16 @@
 import React from "react";
 import "../components/Video.css";
 
-function Video({ title, id, channel, views, time }) {
+function Video({ title, id, channel, views, time, deleteVideo, editVideo }) {
   return (
     <>
       <div className="container">
+        <button className="close" onClick={() => deleteVideo(id)}>
+          X
+        </button>
+        <button className="edit" onClick={() => editVideo(id)}>
+          Edit
+        </button>
         <div className="pic">
           <img src={`https://picsum.photos/id/${id}/160/90`} alt="abhishek" />
         </div>

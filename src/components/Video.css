@@ -7,13 +7,14 @@
   width: 15em;
   margin: 0 0.2em;
   float: left;
+  position: relative;
 }
 .pic img {
   width: 100%;
 }
 .title {
   font-weight: bold;
-  margin-bottom: 1em;
+  margin-bottom: 4px;
   color: white;
 }
 
@@ -26,4 +27,27 @@
 
 .views span {
   padding: 0 0.5em;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+}
+.edit {
+  position: absolute;
+  right: 2rem;
+}
+
+button {
+  background-color: BLACK;
+  border: 1px solid white;
+  padding: 5px;
+  margin: 3px;
+  border-radius: 0.3em;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: gray;
+  color: white;
 }

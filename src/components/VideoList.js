@@ -1,7 +1,7 @@
 import React from "react";
 import Video from "./Video";
 
-function VideoList({ videos }) {
+function VideoList({ videos, deleteVideo, editVideo }) {
   return (
     <div>
       {videos.map((video) => (
@@ -12,6 +12,8 @@ function VideoList({ videos }) {
           time={video.time}
           channel={video.channel}
           id={video.id}
+          deleteVideo={deleteVideo}
+          editVideo={editVideo}
         ></Video>
       ))}
     </div>
